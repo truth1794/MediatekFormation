@@ -32,8 +32,14 @@
                         </select>                    
                     </form>            
                 </th>
+                 <th class="text-center align-top" scope="col">
+                    Détail         
+                </th>
+                
                 <th class="text-center align-top" scope="col">
-                    &nbsp;
+                    Nombre de formations<br />
+                    <a href="{{ path('playlists.sort', {champ:'qtyformations', ordre:'ASC'}) }}" class="btn btn-info btn-sm active" role="button" aria-pressed="true">▼</a>
+                    <a href="{{ path('playlists.sort', {champ:'qtyformations', ordre:'DESC'}) }}" class="btn btn-info btn-sm active" role="button" aria-pressed="true">▲</a>
                 </th>				
             </tr>
         </thead>
@@ -57,7 +63,10 @@
                         </td>            					
                         <td class="text-center">
                             <a href="{{ path('playlists.showone', {id:playlists[k].id}) }}" class="btn btn-secondary">Voir détail</a>
-                        </td> 					
+                        </td> 		
+                         <td class="text-center">
+                        {{ playlists[k].formations|length }}
+                        </td>
                     </tr>
                 {% endfor %}	
             {% endif %}
