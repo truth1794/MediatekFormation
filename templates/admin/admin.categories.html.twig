@@ -1,0 +1,52 @@
+{% extends "baseadmin.html.twig" %}
+
+{% block body %}
+    <h5>Gestion des catégories</h5>
+    <th class="text-end align-middle" scope="col">
+        <p class="text-end">
+                <a href="{{ path('admin.ajout.categories') }}" class="btn btn-primary">
+                    Ajouter une nouvelle categorie
+                </a>
+            </p>              
+    </th>
+    <table class="table table-striped">
+        <caption></caption>
+        <thead>  {#▼▲#}
+            <tr>
+                <th class="text-left align-top" scope="col">
+                    Catégories<br>
+                    <a href="{{ path('admin.categories.sort', {champ:'name', ordre:'ASC'}) }}" class="btn btn-info btn-sm active" role="button" aria-pressed="true">▲</a>
+                    <a href="{{ path('admin.categories.sort', {champ:'name', ordre:'DESC'})}}" class="btn btn-info btn-sm active" role="button" aria-pressed="true">▼</a>
+                </th>
+                <th class="text-left align-top" scope="col">
+                    Formations <br>
+                </th>
+                <th class="text-left align-top" scope="col">
+                    Suppression <br>
+                </th>
+            </tr>
+        </thead>
+        
+        <tbody>  
+            <option value=""></option>
+                {% for categorie in categories %}
+                    <tr class="align-middle">
+                    <td>
+                        <h5 class="text-info">
+                            {{ categorie.name }}
+                        </h5>
+                    </td>
+                    <td class="text-left">
+                        {% for formation in categorie.formations %}
+                            {{ formation.title }}<br />
+                        {% endfor %}
+                    </td>
+                    <td>{# Condition pour réaliser la suppression d'une catégorie si elle ne contient aucune formation#}
+                            {% if categorie.formations|length == 0 %}
+                                <a href="{{ path('admin.categories.suppr', {id:categorie.id}) }}" class="btn btn-danger" onclick="return confirm('Confirmer la suppression de {{ categorie.name }} ?')">Supprimer</a>
+                            {% endif %}
+                    </td>
+                {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

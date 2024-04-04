@@ -5,9 +5,13 @@
 {% block top %}
     <div class="container">
         <!-- titre -->
+        <div class="text-end">
+       <a href="http://localhost/mediatekformation/public/index.php/admin"><h5>Gestion du site</h5></a>
+     </div>
         <div class="text-left">
-            <img src="{{ app.request.getBasePath()~'/banniere.jpg' }}" >
+            <img src="{{ app.request.getBasePath()~'/banniere.jpg' }}" alt="image de la banniere">
         </div>
+        
         <!-- menu -->
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -20,7 +24,10 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{ path('playlists') }}">Playlists</a>
-                    </li>                    
+                    </li>
+                    {#<li class="nav-item">
+                        <a class="nav-link" href="{{ path('admin.formations') }}">Gestion</a>
+                    </li>   #}                  
                 </ul>
             </div>
         </nav>        
@@ -31,9 +38,9 @@
     <div class="container text-center">
         <footer>
             <hr>
-            <p><small><i>
+            <p><small><strong>
                 Consultez nos <a class="link-secondary" href="{{ path('cgu') }}">Conditions Générales d'Utilisation</a>
-            </i></small></p>
+            </strong></small></p>
             
         </footer>
     </div>
