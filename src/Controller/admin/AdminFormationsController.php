@@ -30,7 +30,7 @@ class AdminFormationsController extends AbstractController {
     private $categorieRepository;
     
     /**
-     * Création du constructeur
+     * Constructeur
      * @param FormationRepository $formationRepository
      */
     function __construct(FormationRepository $formationRepository, CategorieRepository $categorieRepository) {
@@ -39,7 +39,7 @@ class AdminFormationsController extends AbstractController {
     }
     
     /**
-     * Création de la route vers la page d'administration des formations
+     * Fonction pour initier une route vers la page admin
      * @Route("/admin", name="admin.formations")
      * @return Response
      */
@@ -53,18 +53,18 @@ class AdminFormationsController extends AbstractController {
     }
     
     /**
-     * Suppression d'une formation
-     * @Route("/admin/suppr.formation/{id}", name="admin.suppr.formation")
+     * Fonction pour supprimer une formation
+     * @Route("/admin/del.formation/{id}", name="admin.del.formation")
      * @param Formation $formations
      * @return Response
      */
-    public function suppr(Formation $formations): Response{
+    public function del(Formation $formations): Response{
         $this->formationRepository->remove($formations, true);
         return $this->redirectToRoute('admin.formations');
     }
     
     /**
-     * Edition d'une formation
+     * Fonction pour editer une formation
      * @Route("/admin/edit/{id}", name="admin.edit.formations")
      * @param Formation $formations
      * @param Request $request
@@ -86,12 +86,12 @@ class AdminFormationsController extends AbstractController {
     }
     
     /**
-     * Ajout d'une formation
-     * @Route("/admin/ajout", name="admin.ajout.formations")
+     * Fonction pour ajouter d'une formation
+     * @Route("/admin/add", name="admin.formations.add")
      * @param Request $request
      * @return Response
      */
-    public function ajout(Request $request): Response{
+    public function add(Request $request): Response{
         $formations = new Formation();
         $formFormation = $this->createForm(FormationType::class, $formations);
         
@@ -108,8 +108,7 @@ class AdminFormationsController extends AbstractController {
     }
     
      /**
-     * Retourne toutes les formations triées sur un champ
-     * Et sur un champ si autre table
+     * Fonction de tri des formation
      * @Route("/admin/formations/tri/{champ}/{ordre}/{table}", name="admin.formations.sort")
      * @param type $champ
      * @param type $ordre
@@ -130,8 +129,7 @@ class AdminFormationsController extends AbstractController {
     }
     
     /**
-     * Récupère les enregistrements selon le champ et la valeur,
-     * Et si le champ est dans une autre table
+     * Fonction qui trouve les formations en fonction d'un champ
      * @Route("/admin/formations/recherche/{champ}/{table}", name="admin.formations.findallcontain")
      * @param type $champ
      * @param Request $request

@@ -19,7 +19,7 @@ use DateTime;
 class FormationType extends AbstractType {
     
     /**
-     * Champs pour le formulaire "formformation"
+     * formformation
      * @param FormBuilderInterface $builder
      * @param array $options
      * @return void

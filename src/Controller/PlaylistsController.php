@@ -99,7 +99,7 @@ class PlaylistsController extends AbstractController
             $playlists = $this->playlistRepository->findByContainValue($champ, $valeur);
         }
         else {
-            $playlists = $this->playlistRepository->findByTableContainValueContainValue($champ, $valeur, $table);
+            $playlists = $this->playlistRepository->findByTableContainValue($champ, $valeur, $table);
         }
         $categories = $this->categorieRepository->findAll();
         return $this->render("pages/playlists.html.twig", [

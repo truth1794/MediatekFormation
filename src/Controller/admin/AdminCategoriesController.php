@@ -31,7 +31,7 @@ class AdminCategoriesController extends AbstractController {
     private $categorieRepository;
     
     /**
-     * Création du constructeur
+     * Constructeur
      * @param FormationRepository $formationRepository
      * @param CategorieRepository $categorieRepository
      */
@@ -41,7 +41,7 @@ class AdminCategoriesController extends AbstractController {
     }
     
     /**
-     * Création de la route vers la page d'administration des catégories
+     * Fonction pour initier une route vers la page admin
      * @Route("/admin/categories", name="admin.categories")
      * @return Response
      */
@@ -54,39 +54,22 @@ class AdminCategoriesController extends AbstractController {
         ]);
     }
     
+    
+    
     /**
-     * Suppression d'une catégorie et redirection vers la page d'administration
-     * @Route("/admin/categories/suppr/{id}", name="admin.categories.suppr")
+     * Fonction pour supprimer une categorie
+     * @Route("/admin/categories/del/{id}", name="admin.categories.del")
      * @param Categorie $categorie
      * @return Response
      */
-    public function suppr(Categorie $categorie): Response{
+    public function del(Categorie $categorie): Response{
         $this->categorieRepository->remove($categorie, true);
         return $this->redirectToRoute('admin.categories');
     }
     
-    /**
-     * Ajout d'une catégorie et redirection vers la page d'administration
-     * @Route("/admin/categories/ajout", name="admin.ajout.categorie")
-     * @param Request $request
-     * @return Response
-     */
-//    public function ajout(Request $request): Response{
-//        $name = $request->get("name");
-//        $nomcategorie = $this->categorieRepository->findAllEqual($name);
-//        
-//        if ($nomcategorie == false) {
-//            $categories = new Categorie();
-//            $categories->setName($name);
-//            $this->categorieRepository->add($categories, true);
-//            return $this->redirectToRoute('admin.categories');
-//        }
-//        return $this->redirectToRoute('admin.categories');
-//    }
-    
     
     /**
-     * Ajout d'une categorie
+     * Fonction pour ajouter d'une categorie
      * @Route("/admin/ajout.categories", name="admin.ajout.categories")
      * @param Request $request
      * @return Response
@@ -109,7 +92,7 @@ class AdminCategoriesController extends AbstractController {
     
     
     /**
-     * Tri les enregistrements selon le champ et l'ordre
+     * Fonction de tri des categories
      * @Route("/admin/categories/tri/{champ}/{ordre}", name="admin.categories.sort")
      * @param type $champ
      * @param type $ordre

@@ -43,7 +43,7 @@
                     </td>
                     <td>{# Condition pour réaliser la suppression d'une catégorie si elle ne contient aucune formation#}
                             {% if categorie.formations|length == 0 %}
-                                <a href="{{ path('admin.categories.suppr', {id:categorie.id}) }}" class="btn btn-danger" onclick="return confirm('Confirmer la suppression de {{ categorie.name }} ?')">Supprimer</a>
+                                <a href="{{ path('admin.categories.del', {id:categorie.id}) }}" class="btn btn-danger" onclick="return confirm('Confirmer la suppression de {{ categorie.name }} ?')">Supprimer</a>
                             {% endif %}
                     </td>
                 {% endfor %}

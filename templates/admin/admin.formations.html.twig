@@ -3,7 +3,7 @@
 {% block body %}
     <h5>Gestion des formations</h5>
     <p class="text-end">
-        <a href="{{ path('admin.ajout.formations') }}" class="btn btn-primary">
+        <a href="{{ path('admin.formations.add') }}" class="btn btn-primary">
             Ajouter une nouvelle formation
         </a>
     </p>
@@ -102,7 +102,7 @@
                         <a href="{{ path('admin.edit.formations', {id:formation.id}) }}" class="btn btn-success">Editer</a>
                     </td>
                     <td>
-                        <a href="{{ path('admin.suppr.formation', {id:formation.id}) }}" class="btn btn-danger" 
+                        <a href="{{ path('admin.del.formation', {id:formation.id}) }}" class="btn btn-danger" 
                         onclick="return confirm('Etes-vous sûr de vouloir supprimer {{ formation.title }} ?')">Supprimer</a>
                     </td>
                 </tr>

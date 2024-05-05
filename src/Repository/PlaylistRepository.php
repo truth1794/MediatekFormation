@@ -41,7 +41,7 @@ class PlaylistRepository extends ServiceEntityRepository
     }
 
     /**
-     * Retourne toutes les playlists triées sur le nom de la playlist
+     * trouve en fonction du nom d'une playlist
      * @param type $champ
      * @param type $ordre
      * @return Playlist[]
@@ -57,8 +57,7 @@ class PlaylistRepository extends ServiceEntityRepository
     }
 
     /**
-     * Enregistrements dont un champ contient une valeur
-     * ou tous les enregistrements si la valeur est vide
+     * Trouve en fonction d'un champ
      * @param type $champ
      * @param type $valeur
      * @param type $table si $champ dans une autre table
@@ -96,7 +95,7 @@ class PlaylistRepository extends ServiceEntityRepository
     }
     
     /**
-     * Renvoie les playlists en fonction du nombre de playlist   
+     * Renvoie les formations en fonction du nombre de formations   
      * @param type $ordre
      * @return Playlist[]
      */

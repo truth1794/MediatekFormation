@@ -3,7 +3,7 @@
 {% block body %}
     <h5>Gestion des playlists</h5>
     <p class="text-end">
-        <a href="{{ path('admin.ajout.playlists') }}" class="btn btn-primary">
+        <a href="{{ path('admin.playlists.add') }}" class="btn btn-primary">
             Ajouter une nouvelle playlist
         </a>
     </p>
@@ -79,11 +79,11 @@
                         <a href="{{ path('playlists.showone', {id:playlists[k].id}) }}" class="btn btn-secondary ">Voir détail</a>
                     </td>
                     <td class="text-center">
-                        <a href="{{ path('admin.edit.playlists', {id:playlists[k].id}) }}" class="btn btn-success ">Editer</a>
+                        <a href="{{ path('admin.playlists.edit', {id:playlists[k].id}) }}" class="btn btn-success ">Editer</a>
                     </td>
                     <td class="text-center">
                         {% if playlists[k].formations|length == 0 %}
-                            <a href="{{ path('admin.suppr.playlist', {id:playlists[k].id}) }}" class="btn btn-danger" 
+                            <a href="{{ path('admin.playlists.edit', {id:playlists[k].id}) }}" class="btn btn-danger" 
                                onclick="return confirm('Confirmer la suppression de {{ playlists[k].name }} ?')">Supprimer</a>
                         {% endif %}
                     </td>

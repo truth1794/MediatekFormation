@@ -37,7 +37,7 @@ class AdminPlaylistsController extends AbstractController {
     private $categorieRepository;
     
     /**
-     * Création du constructeur
+     * Constructeur
      * @param PlaylistRepository $playlistRepository
      * @param FormationRepository $formationRepository
      * @param CategorieRepository $categorieRepository
@@ -50,7 +50,7 @@ class AdminPlaylistsController extends AbstractController {
     
     
     /**
-     * Création de la route vers la page des playlists
+     * Fonction pour initier une route vers la page admin
      * @Route("/admin/playlists", name="admin.playlists")
      * @return Response
      */
@@ -64,19 +64,19 @@ class AdminPlaylistsController extends AbstractController {
     }
     
     /**
-     * Suppression d'une playlist
-     * @Route("/admin/suppr.playlist/{id}", name="admin.suppr.playlist")
+     * Fonction pour supprimer une playlist
+     * @Route("/admin/del.playlist/{id}", name="admin.playlists.del")
      * @param Playlist $playlists
      * @return Response
      */
-    public function suppr(Playlist $playlists): Response{
+    public function del(Playlist $playlists): Response{
         $this->playlistRepository->remove($playlists, true);
         return $this->redirectToRoute('admin.playlists');
     }
     
     /**
-     * Edition d'une playlist
-     * @Route("/admin/edit.playlists/{id}", name="admin.edit.playlists")
+     * Fonction pour editer une playlist
+     * @Route("/admin/edit.playlists/{id}", name="admin.playlists.edit")
      * @param Playlist $playlists
      * @param Request $request
      * @return Response
@@ -97,12 +97,12 @@ class AdminPlaylistsController extends AbstractController {
     }
     
     /**
-     * Ajout d'une playlist
-     * @Route("/admin/ajout.playlists", name="admin.ajout.playlists")
+     * Fonction pour ajouter une playlist
+     * @Route("/admin/add.playlists", name="admin.playlists.add")
      * @param Request $request
      * @return Response
      */
-    public function ajout(Request $request): Response{
+    public function add(Request $request): Response{
         $playlists = new Playlist();
         $formPlaylist = $this->createForm(PlaylistType::class, $playlists);
         
@@ -119,8 +119,7 @@ class AdminPlaylistsController extends AbstractController {
     }
     
     /**
-     * Tri des enregistrements selon le nom des playlists
-     * Ou selon le nombre de formations
+     * Fonction de tri des playlists
      * @Route("/admin/playlists/tri/{champ}/{ordre}", name="admin.playlists.sort")
      * @param type $champ
      * @param type $ordre
@@ -143,8 +142,7 @@ class AdminPlaylistsController extends AbstractController {
     }
     
     /**
-     * Récupère les enregistrements selon $champ $valeur
-     * Et selon le $champ et la $valeur si autre $table
+     * Ronction qui trouve les playlists en fonction d'un champ
      * @Route("/admin/playlists/recherche/{champ}/{table}", name="admin.playlists.findallcontain")
      * @param type $champ
      * @param Request $request

@@ -11,13 +11,12 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 
 /**
- * Builder permettant de définir les champs du formulaire d'ajout ou d'édition
- * d'une categorie
+ * Definition des champs d'ajout/edition d'une categorie
  */
 class CategorieType extends AbstractType {
    
     /**
-     * Ajout des champs pour le formulaire "formcategorie"
+     * formcategorie
      * @param FormBuilderInterface $builder
      * @param array $options
      * @return void
